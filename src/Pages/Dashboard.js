@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Navbar from '../Components/Navbar';
+import Blogs from '../Components/Card';
+import Stats from '../Components/Stats';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -19,7 +21,13 @@ export default function BasicGrid() {
         <Grid item xs={2}>
         <Item sx={{height:'max'}}><Navbar/></Item>
         </Grid>
-        <Grid item xs={10} sx={{display:'flex', flexDirection:'row'}}>
+        <Grid item xs={10} sx={{display:'flex', flexDirection:'row', display:'flex', flexDirection:'column', spacing:'2'}}>
+          <div>
+            <Stats/>
+          </div>
+          <div>
+            <Blogs/>
+          </div>
         </Grid>
       </Grid>
     </Box>
