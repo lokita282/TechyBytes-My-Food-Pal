@@ -1,7 +1,12 @@
 import React from 'react';
+import {View,Text} from 'react-native';
 
 const Chatbot = () => {
-  return <div></div>;
+  return (
+    <View>
+      <Text>Chatbot Screen</Text>
+    </View>
+  );;
 };
 
 export default Chatbot;
