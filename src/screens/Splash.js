@@ -6,20 +6,20 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Loginpage')
-    }, 2500);
+      navigation.navigate('Slidingup')
+    }, 2200);
   }, []);
   return (
     <View style={styles.container}>
       <LottieView
-        source={require('../assets/lf30_editor_clui4n9w.json')}
+        source={require('../assets/hello.json')}
         autoPlay={true}
         loop
         style={styles.lottieview}
       />
 
       <Text style={styles.header}>MyFoodPal</Text>
-      <Text style={{...styles.header, fontSize:20, marginTop:7}}>"Your personal Food Logger"</Text>
+      <Text style={{...styles.header,opacity:0.6, fontSize:20, marginTop:7}}>"Your personal Food Logger"</Text>
       </View>
 
 
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   lottieview: {
-    height: 250,
-    width: 250,
+    height: 400,
+    width: 300,
     marginTop: hp('10%'),
     alignSelf: 'center',
   },
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
     color: '#FB008B',
     fontWeight: 'bold',
     fontSize: 50,
-    marginTop: 100,
+    marginTop: 30,
   },
 });
