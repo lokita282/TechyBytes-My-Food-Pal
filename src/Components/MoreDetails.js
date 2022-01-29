@@ -1,30 +1,29 @@
-import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import cover from '../Assets/cover.svg';
+import * as React from 'react'
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import Box from '@mui/material/Box'
+import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import cover from '../Assets/cover.svg'
 import ParticlesContainer from './ParticlesContainer'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormLabel from '@mui/material/FormLabel'
 
-
-export default function SignUp() {
-  const [name, setName] = useState();
-  const handle = () => {
-    localStorage.setItem('Name', name)
-  }
+export default function MoreDetails() {
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // })
+  }
 
   return (
     <>
@@ -64,10 +63,16 @@ export default function SignUp() {
               }}
             >
               <Avatar sx={{ bgcolor: '#FCC13F' }}>
-                <LockOutlinedIcon />
+                <RateReviewOutlinedIcon />
               </Avatar>
-              <Typography component="h1" variant="h5" fontFamily="ubuntu">
-                Sign Up
+              <Typography
+                component="h1"
+                variant="h5"
+                fontFamily="ubuntu"
+                align="center"
+              >
+                Hi {localStorage.getItem('Name')}, help us get to know you a
+                little better...
               </Typography>
               <Box
                 component="form"
@@ -75,18 +80,31 @@ export default function SignUp() {
                 noValidate
                 sx={{ mt: 1, mx: 5 }}
               >
-                <TextField
-                  margin="normal"
-                  id="name"
-                  label="Username"
-                  name="name"
-                  sx={{
-                    width: '350px',
-                  }}
-                  autoComplete="name"
-                  autoFocus
-                  onChange={(e) => setName(e.target.value)}
-                />
+                <FormLabel id="demo-radio-buttons-group-label">
+                  Gender
+                </FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                  <FormControlLabel
+                    value="other"
+                    control={<Radio />}
+                    label="Other"
+                  />
+                </RadioGroup>
                 <TextField
                   margin="normal"
                   id="email"
@@ -100,20 +118,19 @@ export default function SignUp() {
                 />
                 <TextField
                   margin="normal"
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
+                  name="age"
+                  label="Age"
+                  type="age"
+                  id="age"
                   sx={{
                     width: '350px',
                   }}
-                  autoComplete="current-password"
                 />
                 <TextField
                   margin="normal"
-                  id="contact"
-                  label="Contact"
-                  name="contact"
+                  id="weight"
+                  label="Weight"
+                  name="weight"
                   sx={{
                     width: '350px',
                   }}
@@ -128,14 +145,14 @@ export default function SignUp() {
                     mb: 2,
                     width: '350px',
                     height: '45px',
+                    backgroundColor: '#FCC13F',
                     fontSize: '14px',
                     textTransform: 'none',
-                    backgroundColor: '#FCC13F',
                     fontFamily: 'ubuntu',
                   }}
-                  onClick={handle}
                 >
-                  Sign Up
+                  Next
+                  {/* {localStorage.getItem('Name')} */}
                 </Button>
               </Box>
             </Box>
