@@ -7,25 +7,29 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Input } from "@mui/material";
 import { useState } from "react";
+// import { useState } from "react";
 
 export default function Navbar() {
-
-    const [image, setImage] = useState()
+  const [image, setImage] = useState("");
 
   function uploader(e) {
-      setImage(e.target.files[0]);
-      console.log(new Image(e.target.files[0]))
+    console.log(e.target.files);
+    setImage(e.target.files[0]);
+    console.log(e.target.files[0]);
   }
 
-  async function upload() {
+  function upload() {
     var myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
-      "Bearer 6d3c801c8a19f8c829abe83f49c2267e2f4c5dbf"
+      "Bearer ce1f3f686415ae5abf79d13518ca5d1e8879a97c"
     );
 
+    var myHeaders1 = new Headers();
+    myHeaders1.append("Cookie", "route=222fc2df52ebc04b5a35043498fc068c");
+
     var formdata = new FormData();
-    formdata.append("image", image, "[PROXY]");
+    formdata.append("image", image);
 
     var requestOptions = {
       method: "POST",
@@ -34,17 +38,30 @@ export default function Navbar() {
       redirect: "follow",
     };
 
-    // await axios.post('https://api.logmeal.es/v2/image/recognition/complete/v0.9?language=eng', requestOptions)
-    // .then((res)=>res.json())
-    // .then((result)=>console.log(result))
-    // .catch((error)=>console.log(error)) 
+    var requestOptions1 = {
+      method: "GET",
+      headers: myHeaders1,
+      redirect: "follow",
+    };
 
-    await fetch(
+    fetch(
       "https://api.logmeal.es/v2/image/recognition/complete/v0.9?language=eng",
       requestOptions
     )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result.recognition_results[0].name);
+        fetch(
+          `https://api.edamam.com/api/food-database/v2/parser?app_id=89b3616d&app_key=896c019f9a73920cb25b993240ca7d16&ingr=${result.recognition_results[0].name}`,
+          requestOptions1
+        )
+          .then((r) => r.json())
+          .then((res) => {
+            console.log(res.hints[0].food.nutrients)
+
+          })
+          .catch((error) => console.log("error", error));
+      })
       .catch((error) => console.log("error", error));
   }
 
@@ -80,15 +97,12 @@ export default function Navbar() {
         </ListItem>
       </div>
       <div style={{ marginTop: "450px" }}>
-        <Input 
-        type="file" 
-        id="image" 
-        onChange={uploader} 
-        />
+        <Input type="file" onChange={uploader} />
+        <br /> <br /> <br />
         <Button
           variant="contained"
           onClick={upload}
-          sx={{ textTransform: "none", backgroundColor: "#FB008B"}}
+          sx={{ textTransform: "none", backgroundColor: "#FB008B" }}
         >
           Upload
         </Button>

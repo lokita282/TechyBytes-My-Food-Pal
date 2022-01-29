@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Righteous&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Readex+Pro:wght@200;400;600&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+
+
+.flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+background-color: #FCC13F;
+border: 20px solid #FFFFFF;
+box-shadow: 4px 4px 20px rgba(50, 106, 249, 0.2);
+border-radius: 10px;
+}
+
+.flip-card-back {
+  /* width: 100%;
+  height: 100%; */
+  border: 20px solid transparent;
+  border-image-slice: 1;
+  transform: rotateY(180deg);
+  box-shadow: 4px 4px 20px rgba(50, 106, 249, 0.2);
+border-radius: 10px;
+margin-left: -38px;
+}
+
+h3{
+  font-family: Montserrat;
+}
+
