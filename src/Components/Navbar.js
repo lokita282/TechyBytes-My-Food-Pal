@@ -56,7 +56,10 @@ export default function Navbar() {
           requestOptions1
         )
           .then((r) => r.json())
-          .then((res) => console.log(res))
+          .then((res) => {
+            console.log(res.hints[0].food.nutrients)
+
+          })
           .catch((error) => console.log("error", error));
       })
       .catch((error) => console.log("error", error));

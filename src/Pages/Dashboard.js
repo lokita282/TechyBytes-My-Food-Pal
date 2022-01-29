@@ -21,9 +21,13 @@ export default function BasicGrid() {
         <Grid item xs={2}>
         <Item sx={{height:'max'}}><Navbar/></Item>
         </Grid>
-        <Grid item xs={10} sx={{display:'flex', flexDirection:'row'}}>
-          <Stats/>
-          <Blogs/>
+        <Grid item xs={10} sx={{display:'flex', flexDirection:'row', display:'flex', flexDirection:'column', spacing:'2'}}>
+          <div>
+            <Stats/>
+          </div>
+          <div>
+            <Blogs/>
+          </div>
         </Grid>
       </Grid>
     </Box>
