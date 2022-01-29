@@ -18,10 +18,14 @@ const ButtonComponent = (props) => {
 
 const styles = StyleSheet.create({
     button: {
+        alignItems:'center',
         marginTop: 20,
-        width: wp('85%'),
+        width: wp('40%'),
         height: 50,
-        borderRadius: 50,
+        // textAlign:'center'
+        // borderRadius: 50,
+        marginRight:20,
+        marginLeft:20
     }
 });
 
