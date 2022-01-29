@@ -4,6 +4,7 @@ import SignUp from './Components/Register';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route, Routes } from "react-router";
 import Dashboard from './Pages/Dashboard';
+import Statistics from './Pages/Statistics';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path='/' element={<Login/>}/>
                 <Route path='/register' element={<SignUp/>}/>
                 <Route path='/dashboard' element={<Dashboard/>}/> 
+                <Route path="/stats" element={<Statistics/>}/>
             </Routes>
           </div>
         </Router>
