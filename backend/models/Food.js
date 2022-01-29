@@ -28,6 +28,9 @@ const foodSchema = mongoose.Schema(
     carbs: {
       type: Number,
     },
+    fibres: {
+      type: Number,
+    },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

@@ -1,5 +1,5 @@
-import express from'express'
-import auth from'../middleware/auth.js'
+import express from 'express'
+import auth from '../middleware/auth.js'
 import {
   registerNewUser,
   loginUser,
@@ -8,7 +8,7 @@ import {
   getProfile,
   updateUser,
   deleteUser,
-} from'../controllers/user.js'
+} from '../controllers/user.js'
 
 const router = new express.Router()
 
@@ -30,9 +30,7 @@ router.put('/update', auth, updateUser)
 //Delete Profile
 router.delete('/delete', auth, deleteUser)
 
-
 //Get All Users
 router.get('/get', getUsers)
-
 
 export default router
