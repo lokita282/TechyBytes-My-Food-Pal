@@ -16,6 +16,9 @@ import lottie from '../Assets/lottie.json';
 
 export default function SignIn() {
 
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -26,13 +29,30 @@ export default function SignIn() {
   }
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
+
+    var raw = JSON.stringify({
       email: data.get('email'),
       password: data.get('password'),
     });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://fast-mesa-43934.herokuapp.com/api/user/login", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      console.log(result)
+      localStorage.setItem('token',result)
+    })
+    .catch(error => console.log('error', error));
   };
 
   return (

@@ -12,19 +12,48 @@ import ParticlesContainer from './ParticlesContainer'
 
 
 export default function SignUp() {
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
   const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [pass, setPass] = useState();
+  const [cont, setCont] = useState();
+
   const handle = () => {
     localStorage.setItem('Name', name)
+    localStorage.setItem('Email', email)
+    localStorage.setItem('Password', pass)
+    localStorage.setItem('Contact', cont)
   }
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
+    var raw = JSON.stringify({
+      "name": data.get('name'),
+      "password": data.get('password'),
+      "email": data.get('email'),
+      "contact": data.get('contact')
+    })
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://fast-mesa-43934.herokuapp.com/api/user/register", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      console.log(result)
+      localStorage.setItem('token',result)
+    })
+    .catch(error => console.log('error', error));
+}
 
   return (
     <>
@@ -41,7 +70,7 @@ export default function SignUp() {
             width: '80%',
             height: '80%',
             backgroundImage: `url(${cover})`,
-            backgroundPositionX: '-100px',
+            backgroundPositionX: '-350px',
             backgroundPositionY: '-55px',
           }}
         >
@@ -78,7 +107,7 @@ export default function SignUp() {
                 <TextField
                   margin="normal"
                   id="name"
-                  label="Username"
+                  label="username"
                   name="name"
                   sx={{
                     width: '350px',
@@ -97,6 +126,7 @@ export default function SignUp() {
                   }}
                   autoComplete="email"
                   autoFocus
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                   margin="normal"
@@ -108,6 +138,7 @@ export default function SignUp() {
                     width: '350px',
                   }}
                   autoComplete="current-password"
+                  onChange={(e) => setPass(e.target.value)}
                 />
                 <TextField
                   margin="normal"
@@ -119,6 +150,7 @@ export default function SignUp() {
                   }}
                   autoComplete="contact"
                   autoFocus
+                  onChange={(e) => setCont(e.target.value)}
                 />
                 <Button
                   type="submit"
