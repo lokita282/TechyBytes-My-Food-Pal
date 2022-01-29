@@ -7,6 +7,8 @@ buildscript {
         compileSdkVersion = 30
         targetSdkVersion = 30
         ndkVersion = "21.4.7075529"
+        supportLibVersion   = "30.0.2"
+        playServicesVersion = "17.0.0"
     }
     repositories {
         google()
@@ -37,7 +39,10 @@ allprojects {
                 excludeGroup "com.facebook.react"
             }
         }
+<<<<<<< HEAD
         // ADD THIS
+=======
+>>>>>>> 066e63b124146289e6643a2858e1d7211d309154
         maven { url 'https://maven.google.com' }
         google()
         maven { url 'https://www.jitpack.io' }

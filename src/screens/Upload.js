@@ -3,7 +3,6 @@ import { View, Text, Button, StyleSheet, ImageBackground, TouchableOpacity, Scro
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import ButtonComponent from '../components/ButtonComponent'
 import ImagePicker from 'react-native-image-crop-picker';
-import axios from 'axios';
 import { Dimensions } from "react-native";
 import {
   BarChart
@@ -158,7 +157,7 @@ const Upload = () => {
   const screenWidth = Dimensions.get("window").width;
 
   const data = {
-    labels: [`${k_cal}k_cal`, `Proteins ${protein}g`, `Fats ${fat}`, `Carbs ${carbs}g`, `Fibre ${fibre}g`],
+    labels: [`${k_cal}k_cal`, `Proteins ${protein}g`, `Fats ${fat}g`, `Carbs ${carbs}g`, `Fibre ${fibre}g`],
     datasets: [
       {
         data: [parseInt(k_cal), parseInt(protein), parseInt(fat), parseInt(carbs), parseInt(fibre)]
@@ -237,7 +236,7 @@ const styles = StyleSheet.create({
   },
   imagebackground: {
     marginTop: 10,
-    marginLeft: 20,
+    //marginLeft: 20,
     height: 225,
     width: 225,
     // backgroundColor:'white',
@@ -247,25 +246,25 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 160,
     height: 50,
-    marginLeft: 20,
+    marginLeft: 10,
     // textAlign:'center'
     borderRadius: 15,
   },
   chart: {
-    marginTop: 100,
+    marginTop: 20,
     // alignSelf: 'center',
     marginLeft: 2,
     // alignItems: 'center'
   },
   textStyle: {
     fontSize: 30,
-    marginLeft: 100,
-    marginTop: 40,
+    marginTop: 70,
     color: '#FB008B',
-    fontWeight: '600'
+    textAlign:'center',
+    fontWeight: '600',
   },
   imagebackground2: {
-    marginTop: 120,
+    marginTop: 50,
     marginLeft: 20,
     height: 250,
     width: 250

@@ -6,6 +6,7 @@ import Dashboard from './screens/Dashboard';
 import Upload from './screens/Upload';
 import Chatbot from './screens/Chatbot';
 import MonthReport from './screens/MonthReport';
+import Map from './screens/Map';
 import BottomTab from './screens/BottomTab';
 import Splash from './screens/Splash';
 
@@ -24,6 +25,7 @@ function TabsNavigation() {
         <Stack.Screen name='Chatbot' component={Chatbot} options={{ headerShown: false }}/>
         <Stack.Screen name='Upload' component={Upload} options={{ headerShown: false }}/>
         <Stack.Screen name='Splash' component={Splash} options={{ headerShown: false }}/>
+        <Stack.Screen name='Map' component={Map} options={{ headerShown: false }}/>
     
       </Stack.Navigator>
     </NavigationContainer>
