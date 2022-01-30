@@ -27,8 +27,9 @@ Maps\
 Blogs and Health Tips
 
 ## Web:
-![image](https://user-images.githubusercontent.com/79246912/151685009-364490bd-f624-4161-9409-370ccc9cf10b.png)\
-![image](https://user-images.githubusercontent.com/79246912/151685012-5f9d38ad-f66e-4b31-a3e1-e1c1634970d1.png)\
+![image](https://user-images.githubusercontent.com/79246912/151685536-5f4a79ed-7190-407f-8011-92f5d144f2a2.png)\
+![image](https://user-images.githubusercontent.com/79246912/151685539-f8d069ce-3a15-49f7-8a3e-96df260c01c4.png)\
+![image](https://user-images.githubusercontent.com/79246912/151685541-e3140e06-4ff9-4e20-8fe1-1cf8521593e5.png)\
 ![screencapture-localhost-3000-dashboard-2022-01-30-08_13_02](https://user-images.githubusercontent.com/79246912/151685039-47e20693-da6e-4894-9d6f-55f0bfe5c20e.png)\
 ![screencapture-localhost-3000-blogs-2022-01-30-08_05_47](https://user-images.githubusercontent.com/79246912/151685049-4ed65c52-98c3-4b54-a3bd-c2852b37a5fa.png)
 
