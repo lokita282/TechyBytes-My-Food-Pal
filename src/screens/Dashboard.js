@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,33 +7,78 @@ import {
   Image,
   Linking,
   ScrollView,
+  ImageBackground
 } from 'react-native';
 import CalendarStrip from 'react-native-scrollable-calendar-strip';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import * as Progress from 'react-native-progress';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Slider from '@react-native-community/slider';
 
 const Dashboard = () => {
-  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    const token = AsyncStorage.getItem('access_token')
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWY1YjhmM2IyNDM1ODliYTgxODJlZWEiLCJpYXQiOjE2NDM0OTM2MTksImV4cCI6MTY3NTAyOTYxOX0.90PswktvpkhUCSgU-PZ8kBfKQzQTa43Tz10a4eolFXs`);
+
+    var raw = "";
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch(`https://fast-mesa-43934.herokuapp.com/api/food/get/${value}`, requestOptions)
+      .then(response => response.json())
+      .then((result) => {
+        console.log(result.data.totalCalories);
+        setTotalCalorie(result.data.totalCalories);
+        setTotalProteins(result.data.totalProteins);
+        setTotalCarbs(result.data.totalCarbs);
+        setTotalFibres(result.data.totalFibres);
+      })
+      .catch(error => console.log('error', error));
+  }, [setValue]);
+
+
+  const [value, setValue] = useState('2022-01-30');
+  const [totalCalorie, setTotalCalorie] = useState(0);
+  const [totalProteins, setTotalProteins] = useState(0);
+  const [totalCarbs, setTotalCarbs] = useState(0);
+  const [totalFibres, setTotalFibres] = useState(0);
+  const [water, setWater] = useState(0);
+  const [sleep, setSleep] = useState(0);
+  const [steps, setSteps] = useState(0);
+
   const selectedDate = date => {
     const d = new Date(date);
     console.log(
       d.getFullYear() + '-0' + (d.getMonth() + 1) + '-' + d.getDate(),
     );
     setValue(d.getFullYear() + '-0' + (d.getMonth() + 1) + '-' + d.getDate());
-  };
+
+
+
+  }
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.header}>MyFoodPal</Text>
+        <View style={styles.appbar}>
+          <Text style={styles.header}>MyFoodPal</Text>
+        </View>
+
         <View style={styles.calendar}>
           <CalendarStrip
             scrollable
-            style={{height: 100,paddingTop: 20, paddingBottom: 10}}
+            style={{ height: 100, paddingTop: 20, paddingBottom: 10 }}
             calendarColor={'#FB008B'}
-            calendarHeaderStyle={{color: 'white'}}
-            dateNumberStyle={{color: 'white'}}
-            dateNameStyle={{color: 'white'}}
-            iconContainer={{flex: 0.1}}
+            calendarHeaderStyle={{ color: 'white' }}
+            dateNumberStyle={{ color: 'white' }}
+            dateNameStyle={{ color: 'white' }}
+            iconContainer={{ flex: 0.1 }}
             onDateSelected={selectedDate}
           />
         </View>
@@ -45,7 +90,7 @@ const Dashboard = () => {
               <AnimatedCircularProgress
                 size={100}
                 width={13}
-                fill={60}
+                fill={totalCalorie}
                 duration={1000}
                 tintColor="#FB008B"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
@@ -54,15 +99,15 @@ const Dashboard = () => {
                 rotation={270}
               />
             </View>
-            <Text style={styles.label}>ENERGY:60 kcal</Text>
+            <Text style={styles.label}>ENERGY:{totalCalorie}kcal</Text>
           </View>
           <View style={styles.container2}>
             <View style={styles.progress}>
               <AnimatedCircularProgress
                 size={100}
                 width={13}
-                fill={30}
-                duration={1000}
+                fill={totalCarbs}
+                duration={1500}
                 tintColor="#FB008B"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875"
@@ -70,7 +115,7 @@ const Dashboard = () => {
                 rotation={270}
               />
             </View>
-            <Text style={styles.label}>CARBOHYDRATES:30g</Text>
+            <Text style={styles.label}>CARBOHYDRATES:{totalCarbs}g</Text>
           </View>
         </View>
         <View style={styles.col}>
@@ -79,7 +124,7 @@ const Dashboard = () => {
               <AnimatedCircularProgress
                 size={100}
                 width={13}
-                fill={80}
+                fill={totalProteins}
                 duration={1000}
                 tintColor="#FB008B"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
@@ -88,14 +133,14 @@ const Dashboard = () => {
                 rotation={270}
               />
             </View>
-            <Text style={styles.label}>PROTEINS:80g</Text>
+            <Text style={styles.label}>PROTEINS:{totalProteins}g</Text>
           </View>
           <View style={styles.container2}>
             <View style={styles.progress}>
               <AnimatedCircularProgress
                 size={100}
                 width={13}
-                fill={20}
+                fill={totalFibres}
                 duration={1000}
                 tintColor="#FB008B"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
@@ -105,23 +150,56 @@ const Dashboard = () => {
                 lineCap="square"
               />
             </View>
-            <Text style={styles.label}>FIBRE CONTENT:20g</Text>
+            <Text style={styles.label}>FIBRE CONTENT:{totalFibres}g</Text>
           </View>
         </View>
+        <Text style={styles.title1}>Goals</Text>
         <View style={styles.bar}>
-          <Text style={styles.text}>Water Intake:</Text>
-          <Progress.Bar progress={0.5} width={300} color="#FCC13F" />
+          <Text style={styles.text}>Water Intake: {water} litres</Text>
+          {/* <Progress.Bar progress={0.5} width={300} color="#FCC13F" /> */}
+          <Slider
+            step={1}
+            minimumValue={0}
+            maximumValue={12}
+            value={water}
+            onValueChange={slideValue => setWater(slideValue)}
+            minimumTrackTintColor="#FCC13F"
+            maximumTrackTintColor="#d3d3d3"
+            thumbTintColor="#FCC13F"
+            width={300}
+          />
         </View>
         <View style={styles.bar}>
-          <Text style={styles.text}>Steps Walked:</Text>
-          <Progress.Bar progress={0.7} width={300} color="#FCC13F" />
+          <Text style={styles.text}>Steps Walked: {steps}</Text>
+          <Slider
+            step={1}
+            minimumValue={0}
+            maximumValue={10000}
+            value={steps}
+            onValueChange={slideValue => setSteps(slideValue)}
+            minimumTrackTintColor="#FCC13F"
+            maximumTrackTintColor="#d3d3d3"
+            thumbTintColor="#FCC13F"
+            width={300}
+          />
         </View>
         <View style={styles.bar}>
-          <Text style={styles.text}>Sleep Hours:</Text>
-          <Progress.Bar progress={0.2} width={300} color="#FCC13F" />
+          <Text style={styles.text}>Sleep Hours:{sleep} hours</Text>
+          <Slider
+            step={1}
+            minimumValue={0}
+            maximumValue={8}
+            value={sleep}
+            onValueChange={slideValue => setSleep(slideValue)}
+            minimumTrackTintColor="#FCC13F"
+            maximumTrackTintColor="#d3d3d3"
+            thumbTintColor="#FCC13F"
+            width={300}
+          />
         </View>
+        <Text style={styles.title1}>Blogs</Text>
         <View style={styles.container3}>
-          <Image source={require('../assets/blog1.jpg')} style={styles.image} />
+          <ImageBackground source={require('../assets/blog1.jpg')} style={styles.image} imageStyle={{ borderRadius: 10 }} />
           <View style={styles.content}>
             <Text
               onPress={() => {
@@ -138,7 +216,7 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={styles.container3}>
-          <Image source={require('../assets/blog2.jpg')} style={styles.image} />
+          <ImageBackground source={require('../assets/blog2.jpg')} style={styles.image} imageStyle={{ borderRadius: 10 }} />
           <View style={styles.content}>
             <Text
               onPress={() => {
@@ -157,7 +235,7 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={styles.container3}>
-          <Image source={require('../assets/blog3.jpg')} style={styles.image} />
+          <ImageBackground source={require('../assets/blog3.jpg')} style={styles.image} imageStyle={{ borderRadius: 10 }} />
           <View style={styles.content}>
             <Text
               onPress={() => {
@@ -179,7 +257,7 @@ const Dashboard = () => {
       </View>
     </ScrollView>
   );
-};
+}
 
 export default Dashboard;
 const styles = StyleSheet.create({
@@ -189,13 +267,13 @@ const styles = StyleSheet.create({
   },
   header: {
     textAlign: 'center',
-    color: '#FCC13F',
+    color: 'white',
     fontSize: 40,
     fontWeight: '700',
-    marginTop: 15,
+    paddingTop: 10
   },
   calendar: {
-    marginTop: 20,
+    marginTop: 2,
   },
   text: {
     color: 'black',
@@ -222,6 +300,13 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: '700',
   },
+  title1: {
+    textAlign: 'center',
+    fontSize: 20,
+    marginTop: 30,
+    color: 'black',
+    fontWeight: '700',
+  },
   data: {
     fontSize: 13,
     color: 'white',
@@ -232,11 +317,12 @@ const styles = StyleSheet.create({
     height: 230,
     backgroundColor: '#FB008B',
     marginLeft: 40,
-    marginTop: 50,
+    marginTop: 30,
+    borderRadius:10
   },
   bar: {
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: 10,
   },
   col: {
     flexDirection: 'row',
@@ -250,7 +336,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Source Sans Pro',
   },
   content: {
-    marginTop: 15,
+    marginTop: 8,
     marginRight: 10,
     marginLeft: 20,
   },
@@ -263,4 +349,8 @@ const styles = StyleSheet.create({
     height: 100,
     width: 300,
   },
+  appbar:{
+    backgroundColor:'#FCC13F',
+    elevation:25
+  }
 });

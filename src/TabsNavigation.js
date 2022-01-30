@@ -9,7 +9,7 @@ import MonthReport from './screens/MonthReport';
 import Map from './screens/Map';
 import BottomTab from './screens/BottomTab';
 import Splash from './screens/Splash';
-
+import Profile from './screens/Profile';
 
 
 const Stack = createStackNavigator();
@@ -17,8 +17,9 @@ function TabsNavigation() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='BottomTab'>
+      <Stack.Navigator initialRouteName='Profile'>
         {/* <Stack.Screen name='LandingPage' component={LandingPage} options={{ headerShown: false }}> </Stack.Screen> */}
+        <Stack.Screen name='Profile' component={Profile} options={{ headerShown: false }}/> 
         <Stack.Screen name='BottomTab' component={BottomTab} options={{ headerShown: false }}/> 
         <Stack.Screen name='Dashboard' component={Dashboard} options={{ headerShown: false }}/> 
         <Stack.Screen name='MonthReport' component={MonthReport} options={{ headerShown: false }}/> 
