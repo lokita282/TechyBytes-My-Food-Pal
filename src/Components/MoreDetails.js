@@ -13,7 +13,7 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormLabel from '@mui/material/FormLabel'
-import { Navigate, useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 
 export default function MoreDetails() {
 
@@ -21,7 +21,6 @@ export default function MoreDetails() {
   
   const handleSubmit = (event) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
     nav('/dashboard')
   }
 
