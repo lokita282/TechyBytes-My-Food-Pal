@@ -25,3 +25,14 @@ Comparision Chart\
 ChatBot\
 Maps\
 Blogs and Health Tips
+
+## Web:
+![image](https://user-images.githubusercontent.com/79246912/151685009-364490bd-f624-4161-9409-370ccc9cf10b.png)\
+![image](https://user-images.githubusercontent.com/79246912/151685012-5f9d38ad-f66e-4b31-a3e1-e1c1634970d1.png)\
+![screencapture-localhost-3000-dashboard-2022-01-30-08_13_02](https://user-images.githubusercontent.com/79246912/151685039-47e20693-da6e-4894-9d6f-55f0bfe5c20e.png)\
+![screencapture-localhost-3000-blogs-2022-01-30-08_05_47](https://user-images.githubusercontent.com/79246912/151685049-4ed65c52-98c3-4b54-a3bd-c2852b37a5fa.png)
+
+## App:
+<img src="https://user-images.githubusercontent.com/79246912/151685082-5a646d6c-23be-4297-b79c-43d35032b6f0.png"  width="300" height="600">         <img src="https://user-images.githubusercontent.com/79246912/151685083-0ef5f526-9461-492c-b028-d653400139b6.png"  width="300" height="600">         <img src="https://user-images.githubusercontent.com/79246912/151685085-ed78925e-b770-4529-bce8-20b7986e91b9.png"  width="300" height="600">            <img src="https://user-images.githubusercontent.com/79246912/151685086-4f99d75a-97d7-4192-a95e-b516a95e48e3.png"  width="300" height="600">                <img src="https://user-images.githubusercontent.com/79246912/151685091-f7faf1da-3780-4772-baab-aea64f668f8c.png"  width="300" height="600">             <img src="https://user-images.githubusercontent.com/79246912/151685095-7df01230-00c1-45c0-8dcc-25de1a971d7e.png"  width="300" height="600">               <img src="https://user-images.githubusercontent.com/79246912/151685097-65af987b-76fb-4b7a-a69d-7bc296a21d40.png"  width="300" height="600">              <img src="https://user-images.githubusercontent.com/79246912/151685098-98e565c8-3fe2-443f-812d-702f89c01a4f.png"  width="300" height="600">                <img src="https://user-images.githubusercontent.com/79246912/151685099-612e18f7-5bb7-4503-83cf-15f4c4ff4b4a.png"  width="300" height="600">                <img src="https://user-images.githubusercontent.com/79246912/151685101-13cfd7c0-4e64-41f9-8cf9-ee714b6f5031.png"  width="300" height="600">         <img src="https://user-images.githubusercontent.com/79246912/151685102-c7d226ae-6b09-4d3c-b93d-7ea620af351b.png)"  width="300" height="600">
+
+
