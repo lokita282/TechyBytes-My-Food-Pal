@@ -6,7 +6,6 @@ import Navbar from "../Components/Navbar";
 import Stats from "../Components/Stats";
 import Calendar from "../Components/Calendar";
 import ExtraStats from "../Components/ExtraStats";
-import {Link} from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -31,15 +30,12 @@ export default function BasicGrid() {
           xs={10}
           sx={{
             display: "flex",
-            flexDirection: "row",
-            display: "flex",
             flexDirection: "column",
             spacing: "2",
           }}
         >
           <div style={{marginTop:'20px', marginLeft:'20px', display:'flex', flexDirection:'row',alignItems:'center', justifyContent:'space-around'}}>
-            <div style={{marginRight:'500px'}}> <Calendar /> </div>
-            <Link to="/" style={{textDecoration:'none', color:'#FB008B'}}> Logout </Link>
+            <center> <Calendar /> </center>
           </div>
           <div>
             <Stats/>
