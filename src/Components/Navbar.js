@@ -2,7 +2,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import BarChartIcon from '@mui/icons-material/BarChart';
+import ImageIcon from '@mui/icons-material/Image';
 import PersonIcon from '@mui/icons-material/Person';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
@@ -26,11 +26,11 @@ export default function Navbar() {
         </ListItem>
         <ListItem button style={{ paddingTop: "10px", marginTop:'40px' }}>
           <ListItemIcon>
-            <BarChartIcon style={{color:'#FB008B'}}/>
+            <ImageIcon style={{color:'#FB008B'}}/>
           </ListItemIcon>
           <Link to="/stats" style={{ textDecoration: "none" }}>
             {" "}
-            <ListItemText primary="Statistics" />{" "}
+            <ListItemText primary="Upload Image" />{" "}
           </Link>
         </ListItem>
         <ListItem button style={{ paddingTop: "10px", marginTop:'40px' }}>

@@ -1,4 +1,4 @@
-import { Grid, styled, Paper } from "@mui/material";
+import { Grid, styled, Paper, Card } from "@mui/material";
 import { PieChart, Pie, Cell} from "recharts";
 import {useState,useEffect} from "react"
 
@@ -91,6 +91,7 @@ export default function Stats() {
         </Grid>
         <Grid item xs={2} md={4}>
           <Item>
+            <Card >
             <PieChart width={400} height={175}>
               <Pie
                 data={data2}
@@ -111,6 +112,7 @@ export default function Stats() {
                 ))}
               </Pie>
             </PieChart>
+            </Card>
             <p> Carbs </p>
           </Item>
         </Grid>

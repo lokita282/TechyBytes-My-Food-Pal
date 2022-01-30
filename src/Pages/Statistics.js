@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Navbar from "../Components/Navbar";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import {Typography, Card} from "@mui/material"
 import { BarChart, Bar, LabelList, Label, XAxis } from "recharts";
 
 export default function Statistics() {
@@ -139,78 +140,88 @@ export default function Statistics() {
       .catch((error) => console.log("error", error));
   }
   return (
-    <div>
-      <Grid container>
-        <Grid item xs={2}>
-          <Item sx={{ height: "max" }}>
-            <Navbar />
-          </Item>
-        </Grid>
-        <Grid
-          item
-          xs={10}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "30px",
-          }}
-        >
-            <center>
+    <Grid container>
+      <Grid item xs={2}>
+        <Item sx={{ height: 'max' }}>
+          <Navbar />
+        </Item>
+      </Grid>
+
+      <Grid
+        item
+        xs={10}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '30px',
+          paddingTop: '200px',
+        }}
+      >
+        <center>
+          <Card sx={{ width: 500, elevation: '5' }}>
             <Input type="file" onChange={uploader} />
-            <br/> <br/> <br/>
+            <br /> <br /> <br />
             <Button
               variant="contained"
               onClick={upload}
               sx={{
-                textTransform: "none",
-                backgroundColor: "#FB008B",
-                width: "500px",
+                textTransform: 'none',
+                backgroundColor: '#FB008B',
+                width: '500px',
                 ":hover":{
                   backgroundColor:'#FB008B'
                 }
               }}
             >
-              Upload
+              <Typography variant='body1'> Upload </Typography>
             </Button>
-            <div>Calories: {nut.ENERC_KCAL?nut.ENERC_KCAL:0} kcal</div>
-          <div>
-            Proteins:
-            {nut.PROCNT? nut.PROCNT:0} grams
-          </div>
-          <div>
-            Fats:
-            {nut.FAT?nut.FAT:0} grams
-          </div>
-          <div>
-            Carbohydrates:
-            {nut.CHOCDF?nut.CHOCDF:0} grams
-          </div>
-          <div>
-            Fibres:
-            {nut.FIBTG?nut.FIBTG:0} grams
-          </div>
-          <div style={{ marginTop: "50px" }}>
+          </Card>
+          <div
+            style={{
+              display: 'block',
+              marginTop: '30px',
+              marginBottom: '30px',
+            }}
+          >
+            <Card sx={{ width: 500, elevation: '5' }}>
+              <Typography variant="body1">
+                Calories: {nut.ENERC_KCAL ? nut.ENERC_KCAL : 0} kcal
+              </Typography>
+              <Typography variant="body1">
+                Proteins:
+                {nut.PROCNT ? nut.PROCNT : 0} grams
+              </Typography>
+              <Typography variant="body1">
+                Fats:
+                {nut.FAT ? nut.FAT : 0} grams
+              </Typography>
+              <Typography variant="body1">
+                Carbohydrates:
+                {nut.CHOCDF ? nut.CHOCDF : 0} grams
+              </Typography>
+              <Typography variant="body1">
+                Fibres:
+                {nut.FIBTG ? nut.FIBTG : 0} grams
+              </Typography>
+            </Card>
             <BarChart
               width={800}
               height={400}
               data={data}
-              style={{ padding: "30px" }}
+              style={{ padding: '30px' }}
             >
-                <XAxis dataKey="amt">
-                  <Label
-                    value="Nutrients"
-                    offset={0}
-                    position="insideBottom"
-                  />
-                </XAxis>
+              <XAxis dataKey="amt">
+                <Label value="Nutrients" offset={0} position="insideBottom" />
+              </XAxis>
               <Bar dataKey="uv" fill="#FCC13F">
                 <LabelList dataKey="name" position="top" />
               </Bar>
             </BarChart>
           </div>
-            </center>
-        </Grid>
+        </center>
       </Grid>
-    </div>
-  );
+    </Grid>
+  )
 }

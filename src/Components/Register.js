@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import cover from '../Assets/cover.svg';
 import ParticlesContainer from './ParticlesContainer'
 import { useNavigate } from "react-router-dom";
+import logo from '../Assets/menu.png'
 
 
 export default function SignUp() {
@@ -96,9 +95,8 @@ export default function SignUp() {
                 alignItems: 'center',
               }}
             >
-              <Avatar sx={{ bgcolor: '#FCC13F' }}>
-                <LockOutlinedIcon />
-              </Avatar>
+              <h3 style={{color:'#FB008B'}}> MY FOOD PAL </h3>
+              <img src={logo} alt="logo" width={65} style={{padding:'6px'}}/>
               <Typography component="h1" variant="h5" fontFamily="ubuntu">
                 Sign Up
               </Typography>
