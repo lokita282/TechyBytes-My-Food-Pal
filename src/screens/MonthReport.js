@@ -65,8 +65,8 @@ const MonthReport = () => {
     backgroundGradientFrom: '#FFFFFF',
     //backgroundGradientFromOpacity: 0,
     backgroundGradientTo: '#FFFFFF',
-    backgroundGradientToOpacity: 0.5,
-    color: (opacity = 1) => `rgba(252, 193, 63, ${opacity})`,
+    //backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(251, 0, 139, ${opacity})`,
     // strokeWidth: 2, // optional, default 3
     // barPercentage: 10,
     // useShadowColorFromDataset: false, // optional
@@ -74,7 +74,7 @@ const MonthReport = () => {
   const chartConfig1 = {
     backgroundGradientFrom: '#FFFFFF',
     //backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: '#FFFFFF',
+    backgroundGradientTo: '#FCC13F',
     backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(251, 0, 139, ${opacity})`,
     // strokeWidth: 2, // optional, default 3
@@ -83,6 +83,9 @@ const MonthReport = () => {
   };
   return (
     <ScrollView>
+      <View style={styles.appbar}>
+          <Text style={styles.header1}>MyFoodPal</Text>
+      </View>
       <View style={styles.container}>
         <Text style={styles.header}>JANUARY'S STATISTICS</Text>
         <ProgressChart
@@ -135,7 +138,7 @@ const MonthReport = () => {
             bezier
           />
         </View>
-        <Text style={styles.header}>HEALTH TIPS</Text>
+        <Text style={{...styles.header, marginLeft:130}}>HEALTH TIPS</Text>
         <View style={styles.col}>
           <View style={styles.container2}>
             <FlipCard>
@@ -154,7 +157,7 @@ const MonthReport = () => {
             </FlipCard>
           </View>
           <View style={styles.container2}>
-            <FlipCard>
+            <FlipCard >
               <View style={styles.face}>
                 <Image
                   source={require('../assets/health1.jpg')}
@@ -218,8 +221,8 @@ const styles = StyleSheet.create({
   },
   header: {
     color: '#000000',
-    fontSize: 25,
-    fontWeight: '700',
+    fontSize: 20,
+    fontWeight: '600',
     marginTop: 15,
     marginLeft:10,
   },
@@ -229,16 +232,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#FCC13F',
     marginLeft: 40,
     marginTop: 15,
-    elevation:25
+    elevation:7,
+    borderRadius:10,
   },
   col: {
     flexDirection: 'row',
-    marginTop: 25,
+    marginTop: 8,
+    marginBottom:15
   },
   image: {
     alignSelf: 'center',
     height: 130,
     width: 130,
+    borderRadius:10,
   },
   quote: {
     textAlign: 'center',
@@ -250,5 +256,16 @@ const styles = StyleSheet.create({
   },
   line:{
     marginBottom:10,
-  }
+  },
+  appbar:{
+    backgroundColor:'#FCC13F',
+    elevation:25
+  },
+  header1: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 40,
+    fontWeight: '700',
+    paddingTop: 10
+  },
 });

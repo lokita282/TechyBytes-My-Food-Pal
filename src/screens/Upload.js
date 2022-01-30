@@ -167,6 +167,9 @@ const Upload = () => {
 
   return (
     <ScrollView>
+      <View style={styles.appbar}>
+          <Text style={styles.header}>MyFoodPal</Text>
+      </View>
       <Text style={styles.textStyle}>Scan Your Food</Text>
       <View style={{ marginTop: 20, flex: 0.6, justifyContent: 'flex-start', alignItems: 'center', }}>
 
@@ -258,13 +261,13 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 30,
-    marginTop: 70,
+    marginTop: 20,
     color: '#FB008B',
     textAlign:'center',
     fontWeight: '600',
   },
   imagebackground2: {
-    marginTop: 50,
+    marginTop: 30,
     marginLeft: 20,
     height: 250,
     width: 250
@@ -273,6 +276,17 @@ const styles = StyleSheet.create({
   graphStyle: {
     flex: 1,
     paddingRight: 25,
+  },
+  appbar:{
+    backgroundColor:'#FCC13F',
+    elevation:25
+  },
+  header: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 40,
+    fontWeight: '700',
+    paddingTop: 10
   },
 });
 

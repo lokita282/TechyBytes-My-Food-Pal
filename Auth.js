@@ -35,9 +35,11 @@ const AuthContext = React.createContext();
 
 const AUTHENTICATED = 'AUTHENTICATED';
 const ACCESS_TOKEN_KEY = 'access_token';
+const USER_NAME='username';
 
 // Create a wrapper function for communicating with the API
 const registerUser = async (name, email, password, contact) => {
+  await AsyncStorage.setItem(USER_NAME, name);
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,29 +9,49 @@ import {
   Image,
 } from 'react-native';
 import Slider from '@react-native-community/slider';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from '@react-navigation/native';
 
-const Profile = () => {
-  const [value, setValue] = useState(0);
+
+const Profile = ({navigation}) => {
+    useEffect(() => {
+      const getUsername=async()=>{
+        const username = await AsyncStorage.getItem('username');
+        setUsername(username);
+      }
+    }, []);
+    
+  
+  const [value, setValue] = useState(18);
+  const [height, setHeight] = useState(120);
+  const [weight, setWeight] = useState(40);
+  const[maleselect,setMaleSelect]=useState(false);
+  const[felmaleselect,setFemaleSelect]=useState(false);
+  const[username,setUsername]=useState('');
+ 
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
-        <Text style={styles.header}>Welcome Priyambi !</Text>
+        <Text style={styles.header}>Welcome{username} !</Text>
         <Text style={styles.header1}>
           Please provide the following details:
         </Text>
       </View>
       <View style={styles.col}>
-        <View style={styles.container2}>
-          <TouchableOpacity>
+        <View style={maleselect?{...styles.container2, backgroundColor:'#FB008B'}:styles.container2}>
+          <TouchableOpacity onPress={()=>{setMaleSelect(true);
+          setFemaleSelect(false);}}>
             <Image
               source={require('../assets/male1.png')}
-              style={styles.image}
+              style={styles.image1}
             />
           </TouchableOpacity>
           <Text style={styles.label}>MALE</Text>
         </View>
-        <View style={styles.container2}>
-          <TouchableOpacity>
+        <View style={felmaleselect?{...styles.container2, backgroundColor:'#FB008B'}:styles.container2}>
+          <TouchableOpacity onPress={()=>{setFemaleSelect(true);
+          setMaleSelect(false);}}>
             <Image
               source={require('../assets/female1.png')}
               style={styles.image}
@@ -42,16 +62,82 @@ const Profile = () => {
       </View>
       <View style={styles.col}>
         <View style={styles.container2}>
-          <TextInput style={styles.input} />
+
+          <Text style={{ color: '#FB008B', marginLeft: 48, marginTop: 15, fontSize: 25, fontWeight:'600' }}>{height}</Text>
+          <View style={{ flexDirection: 'row', marginLeft: 23, marginTop: 10 }}>
+            <TouchableOpacity onPress={()=>setHeight(height+1)}>
+              <View style={{
+                height: 40,
+                width: 40,
+                borderRadius: 40, backgroundColor: '#FCC13F', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'
+              }}>
+                <Ionicons
+                  name='add'
+                  size={30}
+                  color='black'
+                >
+                </Ionicons>
+
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setHeight(height-1)}>
+              <View style={{
+                height: 40,
+                width: 40,
+                marginLeft: 20,
+                borderRadius: 40, backgroundColor: '#FCC13F', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'
+              }}>
+                <Ionicons
+                  name='remove'
+                  size={30}
+                  color='black'
+                >
+                </Ionicons>
+              </View>
+            </TouchableOpacity>
+          </View>
           <Text style={styles.label}>HEIGHT (cm)</Text>
         </View>
         <View style={styles.container2}>
-          <TextInput style={styles.input} />
-          <Text style={styles.label}>WEIGHT (Kg) </Text>
+
+          <Text style={{ color: '#FB008B', marginLeft: 58, marginTop: 15, fontSize: 25, fontWeight:'600' }}>{weight}</Text>
+          <View style={{ flexDirection: 'row', marginLeft: 23, marginTop: 10 }}>
+            <TouchableOpacity onPress={()=>setWeight(weight+1)}>
+              <View style={{
+                height: 40,
+                width: 40,
+                borderRadius: 40, backgroundColor: '#FCC13F', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'
+              }}>
+                <Ionicons
+                  name='add'
+                  size={30}
+                  color='black'
+                >
+                </Ionicons>
+
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>setWeight(weight-1)}>
+              <View style={{
+                height: 40,
+                width: 40,
+                marginLeft: 20,
+                borderRadius: 40, backgroundColor: '#FCC13F', justifyContent: 'center', alignItems: 'center', flexDirection: 'row'
+              }}>
+                <Ionicons
+                  name='remove'
+                  size={30}
+                  color='black'
+                >
+                </Ionicons>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.label}>WEIGHT (kg)</Text>
         </View>
       </View>
-      <View style={styles.age}>
-        <Text style={styles.label}>Enter your Age : {value}</Text>
+      <View style={{marginTop:40}}>
+        <Text style={styles.label}>ENTER YOUR AGE : {value}</Text>
         <Slider
           step={1}
           minimumValue={0}
@@ -64,8 +150,8 @@ const Profile = () => {
         />
       </View>
       <View style={styles.buttonview}>
-        <TouchableOpacity onPress={() => {}}>
-          <Text style={styles.button}>PROCEED</Text>
+        <TouchableOpacity onPress={() => {navigation.navigate('BottomTab')}}>
+          <Text style={styles.button}>GET STARTED</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -84,11 +170,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   container2: {
-    width: 130,
-    height: 100,
-    backgroundColor: '#FCC13F',
-    marginLeft: 35,
+    width: 150,
+    height: 150,
+    backgroundColor: '#FFFFFF',
+    marginLeft: 29,
     marginTop: 20,
+    borderRadius: 8,
+    elevation: 10
   },
   col: {
     flexDirection: 'row',
@@ -109,19 +197,21 @@ const styles = StyleSheet.create({
   },
   label: {
     color: 'black',
-    fontSize: 13,
+    fontSize: 16,
+    fontWeight: '600',
     textAlign: 'center',
     fontFamily: 'Source Sans Pro',
-    marginTop: 15,
+    marginTop: 11,
   },
   buttonview: {
     width: 150,
     height: 40,
     backgroundColor: '#FCC13F',
-    borderColor: '#FB008B',
-    borderWidth: 2,
-    marginLeft: 100,
+    // borderColor: '#FB008B',
+    // borderWidth: 2,
+    marginLeft: 110,
     marginTop: 40,
+    borderRadius:12
   },
   input: {
     backgroundColor: 'white',
@@ -132,16 +222,23 @@ const styles = StyleSheet.create({
   },
   button: {
     color: '#FB008B',
-    fontSize: 12,
+    fontSize: 15,
     textAlign: 'center',
-    fontFamily: 'Source Sans Pro',
     marginTop: 8,
+    fontWeight:'700'
   },
   image: {
-    marginTop: 20,
+    marginTop: 30,
     alignSelf: 'center',
-    height: 35,
-    width: 25,
+    height: 63,
+    width: 45,
+    resize: 'center',
+  },
+  image1: {
+    marginTop: 30,
+    alignSelf: 'center',
+    height: 60,
+    width: 60,
     resize: 'center',
   },
 });

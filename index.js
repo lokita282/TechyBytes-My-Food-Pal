@@ -13,4 +13,4 @@ import BottomTab from './src/screens/BottomTab';
 import Splash from './src/screens/Splash';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () =>App);
