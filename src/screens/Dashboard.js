@@ -7,6 +7,7 @@ import {
   Image,
   Linking,
   ScrollView,
+  ToastAndroid,
   ImageBackground
 } from 'react-native';
 import CalendarStrip from 'react-native-scrollable-calendar-strip';
@@ -18,9 +19,10 @@ import Slider from '@react-native-community/slider';
 const Dashboard = () => {
 
   useEffect(() => {
-    const token = AsyncStorage.getItem('access_token')
+    // const token = AsyncStorage.getItem('access_token');
+    // console.log('yash:', token);
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWY1YjhmM2IyNDM1ODliYTgxODJlZWEiLCJpYXQiOjE2NDM0OTM2MTksImV4cCI6MTY3NTAyOTYxOX0.90PswktvpkhUCSgU-PZ8kBfKQzQTa43Tz10a4eolFXs`);
+    myHeaders.append("Authorization", `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWY2MDFiYWUzOTE1ZmM2MzMwNmFhNDkiLCJpYXQiOjE2NDM1MTIyNTAsImV4cCI6MTY3NTA0ODI1MH0.yGatNhAyTOseqFXA30ov7TT70LxTFSNyL5-mJ7ilyug`);
 
     var raw = "";
 
