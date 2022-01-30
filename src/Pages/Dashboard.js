@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -17,6 +16,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BasicGrid() {
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container>
@@ -41,7 +42,7 @@ export default function BasicGrid() {
             <Link to="/" style={{textDecoration:'none', color:'#FB008B'}}> Logout </Link>
           </div>
           <div>
-            <Stats />
+            <Stats/>
           </div>
           <div>
             <ExtraStats />
