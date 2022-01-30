@@ -30,7 +30,7 @@ export default function Statistics() {
     var myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
-      "Bearer 72eb7da6a784e0fba921cc29d31553758354ccbe"
+      "Bearer 91dde578a0453568b989fcec64668c450743faef"
     );
 
     var myHeaders1 = new Headers();
@@ -171,22 +171,22 @@ export default function Statistics() {
             >
               Upload
             </Button>
-            <div>Calories: {nut.ENERC_KCAL} kcal</div>
+            <div>Calories: {nut.ENERC_KCAL?nut.ENERC_KCAL:0} kcal</div>
           <div>
             Proteins:
-            {nut.PROCNT} grams
+            {nut.PROCNT? nut.PROCNT:0} grams
           </div>
           <div>
             Fats:
-            {nut.FAT} grams
+            {nut.FAT?nut.FAT:0} grams
           </div>
           <div>
             Carbohydrates:
-            {nut.CHOCDF} grams
+            {nut.CHOCDF?nut.CHOCDF:0} grams
           </div>
           <div>
             Fibres:
-            {nut.FIBTG} grams
+            {nut.FIBTG?nut.FIBTG:0} grams
           </div>
           <div style={{ marginTop: "50px" }}>
             <BarChart

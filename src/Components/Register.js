@@ -9,12 +9,15 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import cover from '../Assets/cover.svg';
 import ParticlesContainer from './ParticlesContainer'
+import { useNavigate } from "react-router-dom";
 
 
 export default function SignUp() {
 
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
+
+  const nav = useNavigate()
   
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -51,6 +54,7 @@ export default function SignUp() {
     .then(result => {
       console.log(result)
       localStorage.setItem('token',result)
+      nav('/dashboard')
     })
     .catch(error => console.log('error', error));
 }
