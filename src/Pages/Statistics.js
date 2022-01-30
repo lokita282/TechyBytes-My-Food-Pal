@@ -152,8 +152,6 @@ export default function Statistics() {
         xs={10}
         sx={{
           display: 'flex',
-          flexDirection: 'row',
-          display: 'flex',
           flexDirection: 'column',
           padding: '30px',
           paddingTop: '200px',
@@ -170,9 +168,7 @@ export default function Statistics() {
                 textTransform: 'none',
                 backgroundColor: '#FB008B',
                 width: '500px',
-                ":hover":{
-                  backgroundColor:'#FB008B'
-                }
+                
               }}
             >
               <Typography variant='body1'> Upload </Typography>
