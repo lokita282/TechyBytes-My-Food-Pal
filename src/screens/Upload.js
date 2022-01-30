@@ -62,7 +62,7 @@ const Upload = () => {
     })
     console.log("form data", imageData);
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer 72eb7da6a784e0fba921cc29d31553758354ccbe");
+    myHeaders.append("Authorization", "Bearer 84a005429875d798f16be1d4b5a8029e8c0f18f3");
 
     // var formdata = new FormData();
     // formdata.append("image", fileInput.files[0], `${imageData}`);
