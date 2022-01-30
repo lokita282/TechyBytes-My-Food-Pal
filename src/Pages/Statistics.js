@@ -17,7 +17,6 @@ export default function Statistics() {
   }));
 
   const [image, setImage] = useState("");
-  const [food, setFood] = useState();
   const [nut, setNut] = useState({});
   const [data, setData] = useState([{}]);
 
@@ -67,7 +66,6 @@ export default function Statistics() {
       .then((response) => response.json())
       .then((result) => {
         console.log(result.recognition_results[0].name);
-        setFood(result.recognition_results[0].name);
         fetch(
           `https://api.edamam.com/api/food-database/v2/parser?app_id=89b3616d&app_key=6d52253d899440f5256b26d8b7a46e8a&ingr=${result.recognition_results[0].name}`,
           requestOptions1
