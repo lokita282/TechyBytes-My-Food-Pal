@@ -82,10 +82,8 @@ export default function SignIn() {
             options={defaultOptions}
             height={400}
             width={600}
-            style={{
-              marginTop: '100px',
-            }}
           />
+          <b style={{fontSize:'32px', color:'#FB008B', marginLeft:'210px', }}> MY FOOD PAL </b>
         </Grid>
         <Grid>
           <div
