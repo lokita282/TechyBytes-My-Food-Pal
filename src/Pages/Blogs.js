@@ -18,7 +18,7 @@ export default function Blogs() {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container>
           <Grid item xs={2}>
-            <Item sx={{ height: "max" }}>
+            <Item>
               <Navbar />
             </Item>
           </Grid>
@@ -28,17 +28,21 @@ export default function Blogs() {
             sx={{
               display: "flex",
               flexDirection: "row",
-              display: "flex",
-              flexDirection: "column",
               spacing: "2",
             }}
           >
-            <Item>
-                <Card />
-            </Item>
-            <Item>
+            <Grid container spacing={2}>
+              <Grid item xs={3} md={12}>
+                <Card/>
+              </Grid>
+              <Grid item xs={3} md={12}>
+              <Item>
                 <Map/>
             </Item>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item md={12} xs={12}>
           </Grid>
         </Grid>
       </Box>

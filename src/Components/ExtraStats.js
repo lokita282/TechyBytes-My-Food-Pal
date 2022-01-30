@@ -1,78 +1,78 @@
-import { BarChart, Bar, LabelList, Label, XAxis } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 
 export default function ExtraStats() {
 
   const data = [
     {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
+      name: '1',
+      uv: 300,
+      pv: 0,
       amt: "Jan",
     },
     {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
+      name: '2',
+      uv: 300,
+      pv: 0,
       amt: "Feb",
     },
     {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
+      name: '3',
+      uv: 200,
+      pv: 0,
       amt: "Mar",
     },
     {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
+      name: '4',
+      uv: 278,
+      pv: 200,
       amt: "Apr",
     },
     {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
+      name: '5',
+      uv: 189,
+      pv: 100,
       amt: "May",
     },
     {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
+      name: '6',
+      uv: 239,
+      pv: 200,
       amt: "June",
     },
     {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
+      name: '7',
+      uv: 349,
+      pv: 200,
       amt: "July",
     },
     {
-      name: 'Page H',
-      uv: 3490,
-      pv: 4300,
+      name: '8',
+      uv: 349,
+      pv: 0,
       amt: "August",
     },
     {
-      name: 'Page I',
-      uv: 3490,
-      pv: 4300,
+      name: '9',
+      uv: 349,
+      pv: 430,
       amt: "Sept",
     },
     {
-      name: 'Page I',
-      uv: 3490,
-      pv: 4300,
+      name: '10',
+      uv: 349,
+      pv: 430,
       amt: "Oct",
     },
     {
-      name: 'Page I',
-      uv: 3490,
-      pv: 4300,
+      name: '11',
+      uv: 349,
+      pv: 430,
       amt: "Nov",
     },
     {
-      name: 'Page I',
-      uv: 3490,
-      pv: 4300,
+      name: '12',
+      uv: 349,
+      pv: 430,
       amt: "Dec",
     },
   ]
@@ -93,19 +93,24 @@ export default function ExtraStats() {
       </h2>
         <center>
         <BarChart
-          width={800}
-          height={300}
-          data={data}
-          style={{ padding: "30px" }}
-        >
-          <br/> <br/>
-          <XAxis dataKey="amt">
-            <Label value="Monthly Stats" offset={0} position="insideBottom" />
-          </XAxis>
-          <Bar dataKey="uv" fill="#FCC13F">
-            <LabelList dataKey="name" position="top" />
-          </Bar>
-      </BarChart>
+      width={800}
+      height={500}
+      data={data}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar name="healthy" dataKey="pv" fill="#FB008B" />
+      <Bar name="junk" dataKey="uv" fill="#FCC13F" />
+    </BarChart>
         </center>
     </div>
   );

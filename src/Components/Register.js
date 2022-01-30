@@ -54,7 +54,7 @@ export default function SignUp() {
     .then(result => {
       console.log(result)
       localStorage.setItem('token',result)
-      nav('/dashboard')
+      nav('/more-details')
     })
     .catch(error => console.log('error', error));
 }
@@ -168,6 +168,9 @@ export default function SignUp() {
                     textTransform: 'none',
                     backgroundColor: '#FCC13F',
                     fontFamily: 'ubuntu',
+                    ":hover":{
+                      backgroundColor:'#FB008B'
+                    }
                   }}
                   onClick={handle}
                 >

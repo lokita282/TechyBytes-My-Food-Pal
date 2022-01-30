@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import Lottie from 'react-lottie';
 import ParticlesContainer from './ParticlesContainer'
 import lottie from '../Assets/lottie.json';
+import {useNavigate} from 'react-router-dom';
 
 
 export default function SignIn() {
@@ -27,6 +28,8 @@ export default function SignIn() {
       preserveAspectRatio: "xMidYMid slice"
     }
   }
+
+  const nav = useNavigate()
 
   const handleSubmit = (event) => {
 
@@ -51,6 +54,7 @@ export default function SignIn() {
     .then(result => {
       console.log(result)
       localStorage.setItem('token',result)
+      nav('/dashboard')
     })
     .catch(error => console.log('error', error));
   };
