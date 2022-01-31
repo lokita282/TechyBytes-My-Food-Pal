@@ -13,16 +13,15 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormLabel from '@mui/material/FormLabel'
+import { useNavigate } from 'react-router'
 
 export default function MoreDetails() {
+
+  const nav = useNavigate()
+  
   const handleSubmit = (event) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    // eslint-disable-next-line no-console
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // })
+    nav('/dashboard')
   }
 
   return (
@@ -40,7 +39,7 @@ export default function MoreDetails() {
             width: '80%',
             height: '80%',
             backgroundImage: `url(${cover})`,
-            backgroundPositionX: '-100px',
+            backgroundPositionX: '-325px',
             backgroundPositionY: '-55px',
           }}
         >
@@ -107,9 +106,9 @@ export default function MoreDetails() {
                 </RadioGroup>
                 <TextField
                   margin="normal"
-                  id="email"
-                  label="Email Address"
-                  name="email"
+                  id="height"
+                  label="Height"
+                  name="height"
                   sx={{
                     width: '350px',
                   }}
@@ -152,7 +151,6 @@ export default function MoreDetails() {
                   }}
                 >
                   Next
-                  {/* {localStorage.getItem('Name')} */}
                 </Button>
               </Box>
             </Box>

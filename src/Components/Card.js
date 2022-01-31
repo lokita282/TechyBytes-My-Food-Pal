@@ -1,66 +1,93 @@
-import { Grid } from '@mui/material';
-import './components.css'
-import image1 from "../Assets/image1.jpg"
-import image2 from "../Assets/image2.jpg"
-import image3 from "../Assets/image3.jpg"
-import image4 from "../Assets/image4.png"
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions } from '@mui/material';
+import cover from '../Assets/image1.jpg';
+import image2 from '../Assets/image2.jpg';
+import image3 from '../Assets/image3.jpg';
 
-export default function Blogs() {
+export default function MultiActionAreaCard() {
   return (
-    <div style={{ color: 'black', backgroundColor: 'white', width:'95%'}}>
-            <div classNameName="domain" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', flexDirection: 'column' }}>
-                <h2 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '5%', marginBottom: '2%', color: '#FB008B' }} classNameName='domainHeading'>Blogs</h2>
-                <Grid container sx={{ width: '100%' }} style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', width: '100%', marginBottom: '5%', rowGap: '70px' }}>
-                    <Grid item xs={12} sm={6} md={3} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', flexDirection: 'column' }}>
-                        <div className="flip-card">
-                            <div className="flip-card-inner" >
-                                <div className="flip-card-front" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                    <img src={image1} alt="blog1" style={{width:'200px', height:'200px'}}/>
-                                </div>
-                                <div className="flip-card-back" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                    <p>Lorem ipsum dolor sit amet, consectur adipiscing elit. Feugiat porttitor duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat porttior duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', flexDirection: 'column' }}>
-                        <div className="flip-card">
-                            <div className="flip-card-inner" >
-                                <div className="flip-card-front" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                  <img src={image2} alt="blog2" style={{width:'200px', height:'200px'}}/>
-                                </div>
-                                <div className="flip-card-back" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                    <p>Lorem ipsum dolor sit amet, consectur adipiscing elit. Feugiat porttitor duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat porttior duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', flexDirection: 'column' }}>
-                        <div className="flip-card">
-                            <div className="flip-card-inner" >
-                                <div className="flip-card-front" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                  <img src={image3} alt="blog3" style={{width:'200px', height:'200px'}}/>
-                                </div>
-                                <div className="flip-card-back" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                    <p>Lorem ipsum dolor sit amet, consectur adipiscing elit. Feugiat porttitor duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat porttior duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', flexDirection: 'column' }}>
-                        <div className="flip-card">
-                            <div className="flip-card-inner" >
-                                <div className="flip-card-front" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                  <img src={image4} alt="blog4" style={{width:'200px', height:'200px'}}/>
-                                </div>
-                                <div className="flip-card-back" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', width: '100%', height: '100%' }}>
-                                    <p>Lorem ipsum dolor sit amet, consectur adipiscing elit. Feugiat porttitor duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat porttior duis aliquet arcu. Feugiat porttitor duis aliquet arcu. Feugiat duis aliquet. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </Grid>
-                </Grid>
-            </div>
-        </div>
-  )
+    <div style={{display:'flex', flexDirection:'row', padding:'20px 10px 10px 10px', justifyContent:'space-evenly'}}>
+      <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={cover}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Food
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+              A group of 8 crazy bloggers who see the world through hungry
+              eyes!"-that's how they describe themselves. Undoubtedly, they have
+              got the best dishes covered on their blog without compromising on
+              food photography skills.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+      </CardActions>
+    </Card>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={image2}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Dieting
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          The more daring would experiment in the kitchen, remembering the
+              successes, and mercifully forgetting any culinary
+              disasters.Turning your passion takes a lot of effort and
+              confidence.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+      </CardActions>
+    </Card>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={image3}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Health
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          How did we ever manage to cook before the arrival of the internet?
+              I suppose we had to rely on cookbooks, cooking tv shows, and
+              knowledge handed down from our grandmothers.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+      </CardActions>
+    </Card>
+    </div>
+  );
 }

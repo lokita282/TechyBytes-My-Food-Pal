@@ -1,30 +1,62 @@
 import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import cover from '../Assets/cover.svg';
 import ParticlesContainer from './ParticlesContainer'
+import { useNavigate } from "react-router-dom";
+import logo from '../Assets/menu.png'
 
 
 export default function SignUp() {
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const nav = useNavigate()
+  
   const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [pass, setPass] = useState();
+  const [cont, setCont] = useState();
+
   const handle = () => {
     localStorage.setItem('Name', name)
+    localStorage.setItem('Email', email)
+    localStorage.setItem('Password', pass)
+    localStorage.setItem('Contact', cont)
   }
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
+    var raw = JSON.stringify({
+      "name": data.get('name'),
+      "password": data.get('password'),
+      "email": data.get('email'),
+      "contact": data.get('contact')
+    })
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://fast-mesa-43934.herokuapp.com/api/user/register", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      console.log(result)
+      localStorage.setItem('token',result)
+      nav('/more-details')
+    })
+    .catch(error => console.log('error', error));
+}
 
   return (
     <>
@@ -41,7 +73,7 @@ export default function SignUp() {
             width: '80%',
             height: '80%',
             backgroundImage: `url(${cover})`,
-            backgroundPositionX: '-100px',
+            backgroundPositionX: '-350px',
             backgroundPositionY: '-55px',
           }}
         >
@@ -63,9 +95,8 @@ export default function SignUp() {
                 alignItems: 'center',
               }}
             >
-              <Avatar sx={{ bgcolor: '#FCC13F' }}>
-                <LockOutlinedIcon />
-              </Avatar>
+              <h3 style={{color:'#FB008B'}}> MY FOOD PAL </h3>
+              <img src={logo} alt="logo" width={65} style={{padding:'6px'}}/>
               <Typography component="h1" variant="h5" fontFamily="ubuntu">
                 Sign Up
               </Typography>
@@ -78,7 +109,7 @@ export default function SignUp() {
                 <TextField
                   margin="normal"
                   id="name"
-                  label="Username"
+                  label="username"
                   name="name"
                   sx={{
                     width: '350px',
@@ -97,6 +128,7 @@ export default function SignUp() {
                   }}
                   autoComplete="email"
                   autoFocus
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                   margin="normal"
@@ -108,6 +140,7 @@ export default function SignUp() {
                     width: '350px',
                   }}
                   autoComplete="current-password"
+                  onChange={(e) => setPass(e.target.value)}
                 />
                 <TextField
                   margin="normal"
@@ -119,6 +152,7 @@ export default function SignUp() {
                   }}
                   autoComplete="contact"
                   autoFocus
+                  onChange={(e) => setCont(e.target.value)}
                 />
                 <Button
                   type="submit"
@@ -132,6 +166,9 @@ export default function SignUp() {
                     textTransform: 'none',
                     backgroundColor: '#FCC13F',
                     fontFamily: 'ubuntu',
+                    ":hover":{
+                      backgroundColor:'#FB008B'
+                    }
                   }}
                   onClick={handle}
                 >

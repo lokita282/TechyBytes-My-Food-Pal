@@ -28,6 +28,7 @@
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
+  background-color: #FCC13F;
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;

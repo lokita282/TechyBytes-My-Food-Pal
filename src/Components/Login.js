@@ -12,9 +12,13 @@ import Grid from '@mui/material/Grid';
 import Lottie from 'react-lottie';
 import ParticlesContainer from './ParticlesContainer'
 import lottie from '../Assets/lottie.json';
+import {useNavigate} from 'react-router-dom';
 
 
 export default function SignIn() {
+
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
   const defaultOptions = {
     loop: true,
@@ -25,14 +29,34 @@ export default function SignIn() {
     }
   }
 
+  const nav = useNavigate()
+
   const handleSubmit = (event) => {
+
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log({
+
+    var raw = JSON.stringify({
       email: data.get('email'),
       password: data.get('password'),
     });
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://fast-mesa-43934.herokuapp.com/api/user/login", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      console.log(result)
+      localStorage.setItem('token',result)
+      nav('/dashboard')
+    })
+    .catch(error => console.log('error', error));
   };
 
   return (
@@ -58,10 +82,8 @@ export default function SignIn() {
             options={defaultOptions}
             height={400}
             width={600}
-            style={{
-              marginTop: '100px',
-            }}
           />
+          <b style={{fontSize:'32px', color:'#FB008B', marginLeft:'210px', }}> MY FOOD PAL </b>
         </Grid>
         <Grid>
           <div
