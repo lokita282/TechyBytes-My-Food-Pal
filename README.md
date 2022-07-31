@@ -1,4 +1,4 @@
-# TechyBytes-Oculus
+# TechyBytes-My Food Pal
 
 ## Team Members:
 Lokita Varma\
